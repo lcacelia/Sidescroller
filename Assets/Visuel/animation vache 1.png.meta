@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 93f2d13ffaa3c3741a66af18e471293a
+guid: a0f4d26b6cbd86b4f86b7fa5529564ea
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: animation enemie_0
+      name: animation vache 1_0
       rect:
         serializedVersion: 2
-        x: 38
-        y: 402
-        width: 268.85715
-        height: 244
+        x: 262
+        y: 346
+        width: 275.6
+        height: 241
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 25aa815863a899546b254cbb38bc17f5
-      internalID: 1035891089
+      spriteID: 6eaa5290ac703474f979d5789f2b62a3
+      internalID: 5093494
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: animation enemie_1
+      name: animation vache 1_1
       rect:
         serializedVersion: 2
-        x: 306
-        y: 402
-        width: 268.85715
-        height: 244
+        x: 593
+        y: 346
+        width: 275.6
+        height: 241
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4abc8ed6b0cd17449ba4b452b42c48d2
-      internalID: 1912610473
+      spriteID: 080a8541be648104dbad88c146f32c8b
+      internalID: -644174514
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: animation enemie_2
+      name: animation vache 1_2
       rect:
         serializedVersion: 2
-        x: 574
-        y: 402
-        width: 268.85715
-        height: 244
+        x: 924
+        y: 346
+        width: 275.6
+        height: 241
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,92 +179,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3fb0c21f9e301ba478b1de97a08f0afe
-      internalID: -1446919001
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: animation enemie_3
-      rect:
-        serializedVersion: 2
-        x: 842
-        y: 402
-        width: 268.85715
-        height: 244
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cbc7dd792b4eefc4599969b2fdca52f0
-      internalID: 2056568648
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: animation enemie_4
-      rect:
-        serializedVersion: 2
-        x: 1110
-        y: 402
-        width: 268.85715
-        height: 244
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 19529e6ecc3103b48a2221476d12f002
-      internalID: 951093287
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: animation enemie_5
-      rect:
-        serializedVersion: 2
-        x: 1378
-        y: 402
-        width: 268.85715
-        height: 244
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 261cd663ea9c34a4a9b571af5b00e7ee
-      internalID: -178902797
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: animation enemie_6
-      rect:
-        serializedVersion: 2
-        x: 1646
-        y: 402
-        width: 268.85715
-        height: 244
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9cdd5a0dff314a34fbe3bbd6043799b2
-      internalID: -2065649767
+      spriteID: 192a993da8b9866499f4bd624bf8442c
+      internalID: 2087146366
       vertices: []
       indices: 
       edges: []
@@ -280,13 +196,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      animation enemie_0: 1035891089
-      animation enemie_1: 1912610473
-      animation enemie_2: -1446919001
-      animation enemie_3: 2056568648
-      animation enemie_4: 951093287
-      animation enemie_5: -178902797
-      animation enemie_6: -2065649767
+      animation vache 1_0: 5093494
+      animation vache 1_1: -644174514
+      animation vache 1_2: 2087146366
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

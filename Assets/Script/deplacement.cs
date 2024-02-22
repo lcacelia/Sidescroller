@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Deplacement : MonoBehaviour
 {
@@ -6,6 +7,11 @@ public class Deplacement : MonoBehaviour
     //vitesse de deplacement
     public float moveSpeed;
     public float jumpForce;
+    private float horizontal;
+
+    [SerializeField] public Text lait_counter;
+
+    private int lait = 0;
 
 
     // permet d savoir si le Payer saute
@@ -19,6 +25,7 @@ public class Deplacement : MonoBehaviour
 
     // permet de faire déplacer le perso en aoutant un force
     public Rigidbody2D rb;
+    public BoxCollider2D bc2d;
 
     private Vector3 velocity = Vector3.zero;
 
@@ -28,7 +35,7 @@ public class Deplacement : MonoBehaviour
         isGrounded = Physics2D.OverlapArea(groundCheckLeft.position, groundCheckRight.position);
         //Calcule du mouvement 
         // Time.deltaTime <-- aussi longtemps qu'on appuis dans la vrai vie sur la touche le perso avancera 
-        float horizontalMovement = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
+        horizontal = Input.GetAxis("Horizontal");
 
         // saut
         if (Input.GetButtonDown("Jump") && isGrounded)
@@ -38,16 +45,13 @@ public class Deplacement : MonoBehaviour
 
 
         // Application du mouvement
-        MovePlayer(horizontalMovement);
+        MovePlayer();
 
     }
 
-    void MovePlayer(float _horizontalMovement) //ajout "" car c'est un parmettre et permet de pas se tromper avec horizontalMovement
+    void MovePlayer() //ajout "" car c'est un parmettre et permet de pas se tromper avec horizontalMovement
     {
-        Vector3 targetVelocity = new Vector2(_horizontalMovement, rb.velocity.y);//"_horizontalMovement" <-- direction dans la quelle on va se deplacer et "rb.velocity.y" <-- on a deffinit un new Vector2 il faut l associer une valeur a y
-        // "SmoothDamp" <-- deplacement "lisse"
-        // ".05f" temp que le perso fera l'action ici o,5 sec
-        rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, .05f);
+        rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
 
 
         // rajout condition pour que le perso saute
@@ -56,6 +60,17 @@ public class Deplacement : MonoBehaviour
             isJumping = false;
             rb.AddForce(new Vector2(0f, jumpForce));
 
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        
+        if (other.CompareTag("Collectible"))
+        {
+            lait += 1;
+            lait_counter.text = "" + lait;
+            Destroy(other.gameObject);
         }
     }
 
