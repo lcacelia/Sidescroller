@@ -1,13 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Deplacement : MonoBehaviour
+public class deplacement : MonoBehaviour
 {
     // variable pour le deplacement 
     //vitesse de deplacement
     public float moveSpeed;
     public float jumpForce;
     private float horizontal;
+    private Animator anim;
 
     [SerializeField] public Text lait_counter;
 
@@ -29,6 +30,10 @@ public class Deplacement : MonoBehaviour
 
     private Vector3 velocity = Vector3.zero;
 
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
 
     void Update()
     {
@@ -41,11 +46,14 @@ public class Deplacement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             isJumping = true;
+            anim.SetTrigger("Jump");
         }
 
 
         // Application du mouvement
         MovePlayer();
+
+       
 
     }
 
@@ -72,6 +80,7 @@ public class Deplacement : MonoBehaviour
             lait_counter.text = "" + lait;
             Destroy(other.gameObject);
         }
+    
     }
 
 }

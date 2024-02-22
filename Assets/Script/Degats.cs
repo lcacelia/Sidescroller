@@ -1,70 +1,71 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class death : MonoBehaviour
+public class Deplacement : MonoBehaviour
 {
-    public int health = 3;
-    private Rigidbody2D body;
-    private BoxCollider2D col;
+    public float moveSpeed;
+    public float jumpForce;
+    private float horizontal;
 
-    public Image[] hearts;
-    public Sprite full_heart;
-    public Sprite empty_heart;
+    public bool isJumping;
+    public bool isGrounded;
 
-    private bool invincible = false;
-    void Start()
+    public Transform groundCheckLeft;
+    public Transform groundCheckRight;
+
+    public Rigidbody2D rb;
+
+    public Sprite jumpSprite; // Ajout d'une variable pour le sprite de saut
+    private Sprite originalSprite; // Variable pour stocker le sprite original du joueur
+
+    [SerializeField] public Text lait_counter;
+    private int lait = 0;
+
+    private void Start()
     {
-        body = GetComponent<Rigidbody2D>();
-        col = GetComponent<BoxCollider2D>();
+        originalSprite = GetComponent<SpriteRenderer>().sprite; // Stocke le sprite original du joueur au démarrage
     }
 
     private void Update()
     {
-        foreach (Image img in hearts)
+        isGrounded = Physics2D.OverlapArea(groundCheckLeft.position, groundCheckRight.position);
+        horizontal = Input.GetAxis("Horizontal");
+
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            img.sprite = empty_heart;
+            Jump();
         }
-        for (int i = 0; i < health; i++)
-        {
-            hearts[i].sprite = full_heart;
-        }
+
+        MovePlayer();
     }
-    void Dmg()
+
+    void MovePlayer()
     {
-        health -= 1;
-        if (health <= 0)
+        rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
+
+        if (isJumping) // Si le joueur saute, change le sprite en sprite de saut
         {
-            Die();
+            GetComponent<SpriteRenderer>().sprite = jumpSprite;
+        }
+        else // Sinon, utilise le sprite original
+        {
+            GetComponent<SpriteRenderer>().sprite = originalSprite;
         }
     }
 
-    private void Die()
+    void Jump()
     {
-        body.bodyType = RigidbodyType2D.Static;
-        Restart_level();
+        isJumping = true;
+        rb.AddForce(new Vector2(0f, jumpForce));
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!invincible)
+        if (other.CompareTag("Collectible"))
         {
-            if (collision.gameObject.CompareTag("Obstacle"))
-            {
-                health = 0;
-                Die();
-            }
-            if (collision.gameObject.CompareTag("Enemis"))
-            {
-                Dmg();
-            }
+            lait += 1;
+            lait_counter.text = "" + lait;
+            Destroy(other.gameObject);
         }
-    }
-
-    private void Restart_level()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
